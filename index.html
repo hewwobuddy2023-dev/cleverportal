@@ -33,19 +33,19 @@ document.documentElement.style.cssText =
   "margin:0;width:100%;height:100%;overflow:hidden",
 document.body.style.cssText =
   "margin:0;width:100%;height:100%;overflow:hidden"}catch{i.textContent="Unable to verify.",a.value="",a.disabled=!1,d.disabled=!1,a.focus()}}}i.id="m",c.append(a,d),n.append(o,c,i),e.append(n),document.body.append(e),e.addEventListener("click",t=>{t.target===e&&(e.classList.remove("on"),a.value="",i.textContent="")}),d.onclick=r,a.addEventListener("keydown",e=>{"Enter"===e.key&&r()}),e.classList.add("on"),setTimeout(()=>a.focus(),80)})})()</script><script>
-/* dark-error-flow-v2 */
+/* dark-error-flow-v3 */
 (()=>{
  const init=()=>{
-  const target=document.querySelector('.code span:nth-child(2)');
-  if(!target)return;
-  const key='dark-error-v2-decrypt';
-  if(sessionStorage.getItem(key)==='1'){
-   sessionStorage.removeItem(key);
-   target.click(); // invoke original AES verification modal
+  const digit=document.querySelector('.code span:nth-child(2)');
+  if(!digit)return;
+  const next=sessionStorage.getItem('dark-error-v2-decrypt')==='1';
+  if(next){
+   sessionStorage.removeItem('dark-error-v2-decrypt');
+   digit.click();
    return;
   }
   document.addEventListener('click',e=>{
-   if(e.target!==target&&!target.contains(e.target))return;
+   if(e.target!==digit&&!digit.contains(e.target))return;
    e.preventDefault();e.stopImmediatePropagation();
    location.assign('./verify.html');
   },true);
